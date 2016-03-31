@@ -1,8 +1,8 @@
 {
-  "name": "boiler-plate",
+  "name": "RSS-FEED",
   "version": "0.0.0",
-  "description": "boiler-plate",
-  "main": "index.js",
+  "description": "WebEng RSS feed project",
+  "main": "server.js",
   "dependencies": {
     "express": "^4.13.3"
   },
@@ -32,11 +32,11 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {
-    "start": "node ./server/app.js"
+    "start": "node ./bin/www"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/vuzDylan/boilerplate-react-node"
+    "url": "https://github.com/vuzDylan/RSS-FEED"
   },
   "license": "MIT"
 }

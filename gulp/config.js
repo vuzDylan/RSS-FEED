@@ -4,6 +4,7 @@ export default {
   build: {
     css: './dist/css',
     js: './dist/js',
+    img: './dist/img',
     jsMain: './dist/js/main.js',
     dir: './dist',
   },
@@ -17,5 +18,6 @@ export default {
     jsMain: './app/js/app.jsx',
     scripts: './app/js/**/*.@(js|jsx)',
     html: './app/index.html',
+    img: './app/img/*.png',
   },
 };

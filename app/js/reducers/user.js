@@ -16,6 +16,7 @@ function addFav(user, fav) {
       ...favorites,
       fav
     ],
+    last: user.last,
   };
 }
 
@@ -27,6 +28,7 @@ function removeFav(user, index) {
       ...favorites.slice(0, index),
       ...favorites.slice(index + 1),
     ],
+    last: user.last,
   };
 }
 
@@ -69,10 +71,10 @@ export default function users(state=[], action) {
       ];
     case LOGIN_SUCCESS:
       return [
-        ...state.slice(0, action.user),
+        ...state.slice(0, action.index),
         updateLast(state[action.index]),
-        ...state.slice(action.user + 1),
-      ]
+        ...state.slice(action.index + 1),
+      ];
     case RETRIEVE_USERS:
       return action.users;
     default:

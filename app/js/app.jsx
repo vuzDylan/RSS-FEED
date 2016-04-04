@@ -2,17 +2,14 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import routes from './routes';
-import { Router, hashHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import store from './store';
+import App from './containers/App';
 
 window.onload = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <Router history={hashHistory}>
-        {routes}
-      </Router>
+      <App />
     </Provider>,
     document.getElementById('app')
   );

@@ -10,7 +10,8 @@ class Login extends React.Component {
     this.register = this.register.bind(this);
   }
 
-  login() {
+  login(e) {
+    e.preventDefault();
     this.props.login(
       this.refs.username.value,
       this.refs.password.value
@@ -32,16 +33,16 @@ class Login extends React.Component {
             <div className="card-block">
               <h2 id="title" className="text-primary text-xs-center">Yolo Feed</h2>
               <hr />
-              <form>
+              <form onSubmit={this.login}>
                 <fieldset className="form-group">
                   <input ref="username" className="form-control form-control-lg" type="text" placeholder="username" />
                 </fieldset>
                 <fieldset className="form-group">
                   <input ref="password" className="form-control form-control-lg" type="password" placeholder="password" />
                 </fieldset>
+                <button className="btn btn-primary-outline btn-block" onClick={this.login}>Login</button>
+                <button type="button" className="btn btn-warning-outline btn-block" onClick={this.register}>Register</button>
               </form>
-              <button type="button" className="btn btn-primary-outline btn-block" onClick={this.login}>Login</button>
-              <button type="button" className="btn btn-warning-outline btn-block" onClick={this.register}>Register</button>
             </div>
           </div>
         </div>

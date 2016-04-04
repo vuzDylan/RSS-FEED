@@ -1,8 +1,8 @@
 'use strict';
 
-export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-export const LOGIN_FAIL = "LOGIN_FAIL";
-export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 
 function loginSuccess(index) {
   return {
@@ -31,24 +31,27 @@ export function login(user) {
     if (uIndex !== -1) {
       if (users[uIndex].password === user.password) {
         dispatch(loginSuccess(uIndex));
-        sessionStorage.removeItem("current");
-        sessionStorage.setItem("current", JSON.stringify(user));
+        sessionStorage.removeItem('current');
+        sessionStorage.setItem('current', JSON.stringify(user));
+        localStorage.removeItem('users');
+        localStorage.setItem('users', JSON.stringify(getState().user));
         return;
       }
     }
-    dispatch(loginFail("Username or password incorrect"));
+    dispatch(loginFail('Username or password incorrect'));
   }
 }
 
 export function logout() {
   return dispatch => {
+    sessionStorage.removeItem('current');
     dispatch(logoutSuccess());
   }
 }
 
 export function checkLogin() {
   return dispatch => {
-    const user = sessionStorage.getItem("current");
+    const user = sessionStorage.getItem('current');
     if (user) {
       dispatch(login(JSON.parse(user)));
     }

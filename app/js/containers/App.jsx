@@ -26,7 +26,7 @@ class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(retrieve());
     this.props.dispatch(checkLogin());
-    getRss('cnn_topstories').then(data => {
+    getRss('usNews').then(data => {
       console.log(data);
     });
   }

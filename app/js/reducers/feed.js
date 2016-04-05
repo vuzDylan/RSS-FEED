@@ -16,7 +16,7 @@ import { ADD_FEEDS, SELECT_FEED, FILTER_FEED } from '../actions/feed';
 const initState = {
   feeds: [],
   filter: "",
-  selected: NEWS_FEEDS,
+  selected: ALL_FEEDS,
 }
 
 function feeds(state, action) {
@@ -50,6 +50,6 @@ export default function feed(state=initState, action) {
   return {
     feeds: feeds(state.feeds, action),
     filter: filter(state.filter, action),
-    selected: selected(state.filter, action),
+    selected: selected(state.selected, action),
   };
 }

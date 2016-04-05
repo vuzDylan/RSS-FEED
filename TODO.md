@@ -1,0 +1,6 @@
+- Move Nav to container
+- Add Nav func
+- Create alerts container
+- Create Feeds container
+- Create Feed component
+- Find stupid sports and weather feeds

@@ -35,12 +35,22 @@ class Nav extends React.Component {
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#">
-              News
+              US News
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#">
+              World News
             </a>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#">
               Weather
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#">
+              Tech
             </a>
           </li>
         </ul>

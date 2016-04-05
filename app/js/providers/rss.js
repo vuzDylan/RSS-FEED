@@ -1,9 +1,17 @@
 'use strict';
 
+const topics =  {
+  sports: "",
+  weather: "",
+  usNews: "cnn_us",
+  worldNews: "cnn_world",
+  tech: "cnn_tech",
+}
+
 export default function getRss(topic) {
   const promise = new Promise((resolve, reject) => {
     const xhttp = new XMLHttpRequest();
-    const fullUrl = 'http://www.se.rit.edu/~dpv1592/dumb.php?url=http://rss.cnn.com/rss/' + topic + '.rss';
+    const fullUrl = 'http://www.se.rit.edu/~dpv1592/dumb.php?url=http://rss.cnn.com/rss/' + topics[topic] + '.rss';
     xhttp.onreadystatechange = function() {
       if (xhttp.readyState == 4 && xhttp.status == 200) {
         resolve(xhttp.responseXML.querySelectorAll('item'));
@@ -24,6 +32,7 @@ export default function getRss(topic) {
         date: new Date(item.querySelector('pubDate').innerHTML),
         link: item.querySelector('link').innerHTML,
         content: item.querySelector('description').innerHTML,
+        feed: topic,
       });
     }
     return parsed;

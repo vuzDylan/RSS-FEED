@@ -4,10 +4,11 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 
-function loginSuccess(index) {
+function loginSuccess(index, last) {
   return {
     type: LOGIN_SUCCESS,
     index,
+    last,
   };
 }
 
@@ -30,7 +31,7 @@ export function login(user) {
     const uIndex = users.map(u => u.username).indexOf(user.username);
     if (uIndex !== -1) {
       if (users[uIndex].password === user.password) {
-        dispatch(loginSuccess(uIndex));
+        dispatch(loginSuccess(uIndex, users[uIndex].last));
         sessionStorage.removeItem('current');
         sessionStorage.setItem('current', JSON.stringify(user));
         localStorage.removeItem('users');

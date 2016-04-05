@@ -5,7 +5,6 @@ export const ADD_USER_FAIL = 'ADD_USER_FAIL';
 export const ADD_FAVORITE_SUCCESS = 'ADD_FAVORITE_SUCCESS';
 export const ADD_FAVORITE_FAIL = 'ADD_FAVORITE_FAIL';
 export const REMOVE_FAVORITE_SUCCESS = 'REMOVE_FAVORITE_SUCCESS';
-export const REMOVE_FAVORITE_FAIL = 'REMOVE_FAVORITE_FAIL';
 export const RETRIEVE_USERS = 'RETRIEVE_USERS';
 
 function addUserSuccess(user) {
@@ -42,13 +41,6 @@ function removeFavoriteSuccess(user, index) {
     type: REMOVE_FAVORITE_SUCCESS,
     user,
     index,
-  };
-}
-
-function removeFavoriteFail(error) {
-  return {
-    type: REMOVE_FAVORITE_FAIL,
-    error,
   };
 }
 

@@ -1,4 +1,5 @@
 'use strict';
+import getRss from '../providers/rss';
 
 export const ADD_FEEDS = 'ADD_FEEDS';
 export const SELECT_FEED = 'SELECT_FEED';
@@ -23,4 +24,12 @@ export function filterFeed(filter) {
     type: FILTER_FEED,
     filter,
   };
+}
+
+export function getFeed(feed) {
+  return dispatch => {
+    getRss(feed).then(data => {
+      dispatch(addFeeds(data));
+    });
+  }
 }

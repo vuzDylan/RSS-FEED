@@ -14,7 +14,7 @@ class Alerts extends React.Component {
         <button className="close" type="button" onClick={this.props.dismiss} aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        {this.props.alert.message}
+        Last login: {this.props.alert.message}
       </div>
     )
   }

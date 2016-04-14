@@ -5,10 +5,12 @@ import Feed from '../components/Feed';
 import Alerts from '../components/Alerts';
 import { connect } from 'react-redux';
 import { closeAlert } from '../actions/alerts';
+import { getFeed } from '../actions/feed';
 
 function mapStateToProps(store) {
   return {
     alert: store.alerts,
+    feeds: store.feed.feeds,
   };
 }
 
@@ -17,6 +19,13 @@ class FeedContainer extends React.Component {
     super();
 
     this.dismiss = this.dismiss.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.dispatch(getFeed('weather'));
+    this.props.dispatch(getFeed('usNews'));
+    this.props.dispatch(getFeed('worldNews'));
+    this.props.dispatch(getFeed('tech'));
   }
 
   dismiss() {
@@ -33,7 +42,7 @@ class FeedContainer extends React.Component {
             <div className="card">
               <div className="card-block">
                 <h4 className="card-title text-xs-center">Yolo Feed</h4>
-                <Feed />
+                <Feed feeds={this.props.feeds} />
               </div>
             </div>
           </div>

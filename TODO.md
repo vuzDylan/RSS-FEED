@@ -1,5 +1,5 @@
-- Create alerts container
-- Add status to alerts (bule vs red vs green)
-- Create Feeds container
-- Create Feed component
-- Find stupid sports and weather feeds
+- Sort on date
+- Make sorting
+- Make favs work
+- CSS needs to be done for real...
+- Find sport feed

@@ -6,7 +6,7 @@ import Alerts from '../components/Alerts';
 import { connect } from 'react-redux';
 import { favorite } from '../actions/user';
 import { closeAlert } from '../actions/alerts';
-import { getFeed, addFavs } from '../actions/feed';
+import { getFeed } from '../actions/feed';
 
 function mapStateToProps(store) {
   return {
@@ -14,6 +14,8 @@ function mapStateToProps(store) {
     filter: store.feed.filter,
     selected: store.feed.selected,
     feeds: store.feed.feeds,
+    user: store.user,
+    current: store.auth.current,
   };
 }
 
@@ -27,7 +29,6 @@ class FeedContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(addFavs());
     this.props.dispatch(getFeed('WEATHER_FEEDS'));
     this.props.dispatch(getFeed('US_NEWS_FEEDS'));
     this.props.dispatch(getFeed('WORLD_NEWS_FEEDS'));
@@ -45,7 +46,11 @@ class FeedContainer extends React.Component {
 
   filter() {
     return this.props.feeds.filter(feed => {
-      return this.props.selected === "ALL_FEEDS" || this.props.selected === feed.feed;
+      if (this.props.selected === "FAV_FEEDS") {
+        return !!this.props.user[this.props.current].favorites.find(fav => fav === feed.title);
+      } else {
+        return this.props.selected === "ALL_FEEDS" || this.props.selected === feed.feed;
+      }
     }).filter(feed => {
       return feed.title.indexOf(this.props.filter) !== -1;
     });

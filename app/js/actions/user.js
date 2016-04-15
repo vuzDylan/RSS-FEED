@@ -79,13 +79,12 @@ export function favorite(fav) {
     const state = getState();
     const uIndex = state.auth.current;
     const fIndex = state.user[uIndex].favorites.findIndex(feed => {
-      return feed.title === fav.title;
+      return feed === fav.title;
     });
     if (fIndex !== -1) {
       dispatch(removeFavoriteSuccess(uIndex, fIndex));
     } else {
-      fav.fav = true; // magic to tell us when to render as a fav
-      dispatch(addFavoriteSuccess(uIndex, fav));
+      dispatch(addFavoriteSuccess(uIndex, fav.title));
     }
     localStorage.removeItem("users");
     localStorage.setItem("users", JSON.stringify(getState().user));

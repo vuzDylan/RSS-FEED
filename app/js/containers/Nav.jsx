@@ -99,6 +99,14 @@ class Nav extends React.Component {
               Tech
             </a>
           </li>
+          <li className="nav-item">
+            <a
+              onClick={this.handleClick.bind(this, FAV_FEEDS)}
+              className={ "nav-link" + (this.props.selected===FAV_FEEDS ? " active" : "") }
+              href="#">
+              Favorites
+            </a>
+          </li>
         </ul>
         <button onClick={ this.logout } type="button" className="btn btn-secondary-outline pull-xs-right">Logout</button>
         <form onSubmit={ this.handleSubmit } className="form-inline pull-xs-right">

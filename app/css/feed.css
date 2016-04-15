@@ -1,0 +1,18 @@
+.link:hover, .link:focus {
+  cursor: pointer;
+  color: #6C7A89;
+}
+.favorite.active {
+  background-color: #F7CA18;
+  color: white;
+}
+.favorite.active:hover, .favorite.active:focus {
+  cursor: pointer;
+  background-color: #F5D76E;
+  color: #F7CA18;
+}
+.favorite:hover, .favorite:focus {
+  cursor: pointer;
+  background-color: #F5D76E;
+  color: #F7CA18;
+}

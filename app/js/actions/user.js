@@ -59,8 +59,7 @@ export function addUser(user) {
       dispatch(addUserSuccess(user));
       localStorage.removeItem("users");
       localStorage.setItem("users", JSON.stringify(getState().user));
-    }
-    else {
+    } else {
       dispatch(addUserFail("User exsists"));
     }
   }
@@ -75,14 +74,21 @@ export function retrieve() {
   }
 }
 
-export function addFavorite(fav) {
-  return dispatch => {
-    return;
+export function favorite(fav) {
+  return (dispatch, getState) => {
+    const state = getState();
+    const uIndex = state.auth.current;
+    const fIndex = state.user[uIndex].favorites.findIndex(feed => {
+      return feed.title === fav.title;
+    });
+    if (fIndex !== -1) {
+      dispatch(removeFavoriteSuccess(uIndex, fIndex));
+    } else {
+      fav.fav = true; // magic to tell us when to render as a fav
+      dispatch(addFavoriteSuccess(uIndex, fav));
+    }
+    localStorage.removeItem("users");
+    localStorage.setItem("users", JSON.stringify(getState().user));
   }
 }
 
-export function removeFavorite(fav) {
-  return dispatch => {
-    return;
-  }
-}

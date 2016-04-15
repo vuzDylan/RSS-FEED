@@ -4,12 +4,15 @@ import React from 'react';
 import Feed from '../components/Feed';
 import Alerts from '../components/Alerts';
 import { connect } from 'react-redux';
+import { favorite } from '../actions/user';
 import { closeAlert } from '../actions/alerts';
-import { getFeed } from '../actions/feed';
+import { getFeed, addFavs } from '../actions/feed';
 
 function mapStateToProps(store) {
   return {
     alert: store.alerts,
+    filter: store.feed.filter,
+    selected: store.feed.selected,
     feeds: store.feed.feeds,
   };
 }
@@ -18,18 +21,34 @@ class FeedContainer extends React.Component {
   constructor() {
     super();
 
+    this.filter = this.filter.bind(this);
     this.dismiss = this.dismiss.bind(this);
+    this.toggleFav = this.toggleFav.bind(this);
   }
 
   componentDidMount() {
-    this.props.dispatch(getFeed('weather'));
-    this.props.dispatch(getFeed('usNews'));
-    this.props.dispatch(getFeed('worldNews'));
-    this.props.dispatch(getFeed('tech'));
+    this.props.dispatch(addFavs());
+    this.props.dispatch(getFeed('WEATHER_FEEDS'));
+    this.props.dispatch(getFeed('US_NEWS_FEEDS'));
+    this.props.dispatch(getFeed('WORLD_NEWS_FEEDS'));
+    this.props.dispatch(getFeed('TECH_FEEDS'));
+    this.props.dispatch(getFeed('SPORTS_FEEDS'));
   }
 
   dismiss() {
     this.props.dispatch(closeAlert());
+  }
+
+  toggleFav(fav) {
+    this.props.dispatch(favorite(fav));
+  }
+
+  filter() {
+    return this.props.feeds.filter(feed => {
+      return this.props.selected === "ALL_FEEDS" || this.props.selected === feed.feed;
+    }).filter(feed => {
+      return feed.title.indexOf(this.props.filter) !== -1;
+    });
   }
 
   render() {
@@ -42,7 +61,7 @@ class FeedContainer extends React.Component {
             <div className="card">
               <div className="card-block">
                 <h4 className="card-title text-xs-center">Yolo Feed</h4>
-                <Feed feeds={this.props.feeds} />
+                <Feed feeds={this.filter()} toggleFav={this.toggleFav} />
               </div>
             </div>
           </div>

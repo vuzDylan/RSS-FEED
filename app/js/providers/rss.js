@@ -1,11 +1,11 @@
 'use strict';
 
 const topics =  {
-  sports: "",
-  weather: "http://www.se.rit.edu/~dpv1592/dumb.php?url=http://rss.weather.com/rss/national/rss_nwf_rss.xml?cm_ven=NWF&amp;cm_cat=rss&amp;par=NWF_rss",
-  usNews: "http://www.se.rit.edu/~dpv1592/dumb.php?url=http://rss.cnn.com/rss/cnn_us.rss",
-  worldNews: "http://www.se.rit.edu/~dpv1592/dumb.php?url=http://rss.cnn.com/rss/cnn_world.rss",
-  tech: "http://www.se.rit.edu/~dpv1592/dumb.php?url=http://rss.cnn.com/rss/cnn_tech.rss",
+  SPORTS_FEEDS: "http://www.se.rit.edu/~dpv1592/dumb.php?url=http://espn.go.com/espn/rss/news",
+  WEATHER_FEEDS: "http://www.se.rit.edu/~dpv1592/dumb.php?url=http://rss.weather.com/rss/national/rss_nwf_rss.xml?cm_ven=NWF&amp;cm_cat=rss&amp;par=NWF_rss",
+  US_NEWS_FEEDS: "http://www.se.rit.edu/~dpv1592/dumb.php?url=http://rss.cnn.com/rss/cnn_us.rss",
+  WORLD_NEWS_FEEDS: "http://www.se.rit.edu/~dpv1592/dumb.php?url=http://rss.cnn.com/rss/cnn_world.rss",
+  TECH_FEEDS: "http://www.se.rit.edu/~dpv1592/dumb.php?url=http://rss.cnn.com/rss/cnn_tech.rss",
 }
 
 function parseItem(item, topic) {

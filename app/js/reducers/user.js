@@ -13,7 +13,7 @@ function addFav(user, fav) {
     username: user.username,
     password: user.password,
     favorites: [
-      ...favorites,
+      ...user.favorites,
       fav
     ],
     last: user.last,
@@ -25,8 +25,8 @@ function removeFav(user, index) {
     username: user.username,
     password: user.password,
     favorites: [
-      ...favorites.slice(0, index),
-      ...favorites.slice(index + 1),
+      ...user.favorites.slice(0, index),
+      ...user.favorites.slice(index + 1),
     ],
     last: user.last,
   };

@@ -33,3 +33,11 @@ export function getFeed(feed) {
     });
   }
 }
+
+export function addFavs() {
+  return (dispatch, getState) => {
+    const state = getState();
+    const uIndex = state.auth.current;
+    return dispatch(addFeeds(state.user[uIndex].favorites));
+  }
+}

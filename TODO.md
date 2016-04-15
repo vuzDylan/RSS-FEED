@@ -1,5 +1,2 @@
-- Sort on date
-- Make sorting
-- Make favs work
 - CSS needs to be done for real...
 - Find sport feed

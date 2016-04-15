@@ -1,2 +1,1 @@
-- Fix fav
 - multi select
